@@ -1,0 +1,19 @@
+{% block title %}Workouts{% endblock %}
+{% block content %}
+    <h1>Workouts</h1>
+    <em>Here's a summary of your workouts:</em>
+    <hr />
+    <ul>
+        {% for workout in workouts %}
+            <li class="workout">
+                <h2>{{ workout.name }}</h3>
+            {% for set in workout.sets %}
+                    <p> {{set.weight}}</p>
+                    <p> {{set.reps}}</p>
+            {% endfor %}
+            </li>
+        {% endfor %}
+
+    </ul>
+    <hr />
+{% endblock %}
