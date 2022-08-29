@@ -7,6 +7,9 @@
         {% for workout in workouts %}
             <li class="workout">
                 <h2>{{ workout.name }}</h3>
+                <form action="{{ url_for('example.delete_workout', id=workout.id) }}" method="POST">
+                    <input type="submit" value="Delete">
+                </form>
             {% for set in workout.sets %}
                     <p> {{set.weight}}</p>
                     <p> {{set.reps}}</p>
@@ -16,4 +19,20 @@
 
     </ul>
     <hr />
+    <h2>Add new workout</h2>
+    <form method="POST">
+        <fieldset>
+            <label for="name-input">Name of workout: </label>
+            <input type="text" id="name-input" name="name" required />
+        </fieldset>
+        <fieldset>
+            <label for="weight-input">Weight: </label>
+            <input type="text" id="weight-input" name="weight" required />
+        </fieldset>
+        <fieldset class="full-width">
+            <label for="reps-input">Reps: </label>
+            <textarea id="reps-input" name="reps" required></textarea>
+            <input type="submit" value="Submit">
+        </fieldset>
+    </form>
 {% endblock %}
